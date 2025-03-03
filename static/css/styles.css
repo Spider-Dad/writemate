@@ -312,6 +312,17 @@ footer {
     font-size: 14px;
 }
 
+footer a {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #2a6fc9;
+    text-decoration: underline;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .container {
