@@ -7,5 +7,6 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
+  command: python app.py
   containerPort: 5000
-  scriptName: app.py
+  servicePort: 80
