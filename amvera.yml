@@ -1,12 +1,13 @@
+version: null
 meta:
   environment: python
   toolchain:
     name: pip
-    version: 3.8
+    version: "3.11"
 build:
   requirementsPath: requirements.txt
 run:
-  command: python app.py
-  port: 5000
-  containerPort: 5000
-  servicePort: 80
+  end:
+    port: 5000
+    containerPort: 5000,80
+    scriptName: app.py
