@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПишиЛегко - AI помощник для создания текстов</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-pen-fancy"></i> ПишиЛегко</h1>
+            <p>AI помощник для создания и улучшения текстовых сообщений</p>
+        </header>
+
+        <div class="mode-selector">
+            <button id="writeMode" class="mode-btn active"><i class="fas fa-pencil-alt"></i> Написать</button>
+            <button id="replyMode" class="mode-btn"><i class="fas fa-reply"></i> Ответить</button>
+        </div>
+
+        <div class="input-section">
+            <div id="originalTextContainer" class="hidden">
+                <label for="originalText">Оригинальное сообщение:</label>
+                <textarea id="originalText" placeholder="Вставьте текст, на который хотите ответить..."></textarea>
+                <div class="validation-message">Пожалуйста, введите оригинальное сообщение</div>
+            </div>
+
+            <div>
+                <label id="inputLabel" for="userInput">О чем вы хотите написать?</label>
+                <textarea id="userInput" placeholder="Введите тему или описание..."></textarea>
+                <div class="validation-message">Пожалуйста, введите текст</div>
+            </div>
+        </div>
+
+        <div class="parameters">
+            <div class="parameter">
+                <label>Тон:</label>
+                <div class="parameter-options">
+                    <button class="param-btn active" data-param="tone" data-value="auto">Авто</button>
+                    <button class="param-btn" data-param="tone" data-value="формальный">Формальный</button>
+                    <button class="param-btn" data-param="tone" data-value="неформальный">Неформальный</button>
+                    <button class="param-btn" data-param="tone" data-value="бизнес">Бизнес</button>
+                    <button class="param-btn" data-param="tone" data-value="шуточный">Шуточный</button>
+                    <button class="param-btn" data-param="tone" data-value="дружелюбный">Дружелюбный</button>
+                </div>
+                <div class="custom-input" id="customToneInput">
+                    <input type="text" placeholder="Опишите желаемый тон...">
+                    <button class="apply-btn"><i class="fas fa-check"></i></button>
+                    <button class="cancel-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="custom-tags" id="customToneTags"></div>
+            </div>
+
+            <div class="parameter">
+                <label>Формат:</label>
+                <div class="parameter-options">
+                    <button class="param-btn active" data-param="format" data-value="auto">Авто</button>
+                    <button class="param-btn" data-param="format" data-value="электронная почта">Эл. почта</button>
+                    <button class="param-btn" data-param="format" data-value="мессенджер">Мессенджер</button>
+                </div>
+                <div class="custom-input" id="customFormatInput">
+                    <input type="text" placeholder="Опишите желаемый формат...">
+                    <button class="apply-btn"><i class="fas fa-check"></i></button>
+                    <button class="cancel-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="custom-tags" id="customFormatTags"></div>
+            </div>
+
+            <div class="parameter">
+                <label>Длина:</label>
+                <div class="parameter-options">
+                    <button class="param-btn active" data-param="length" data-value="auto">Авто</button>
+                    <button class="param-btn" data-param="length" data-value="short">Короткий</button>
+                    <button class="param-btn" data-param="length" data-value="medium">Средний</button>
+                    <button class="param-btn" data-param="length" data-value="long">Длинный</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="generateBtn" class="primary-btn"><i class="fas fa-magic"></i> Сгенерировать</button>
+            <button id="clearBtn" class="secondary-btn"><i class="fas fa-trash"></i> Очистить</button>
+        </div>
+
+        <div id="statusContainer">
+            <div id="loadingIndicator" class="hidden">
+                <div class="spinner"></div>
+                <p>Генерация текста...</p>
+            </div>
+
+            <div id="errorMessage" class="hidden">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Произошла ошибка. Пожалуйста, попробуйте еще раз.</p>
+            </div>
+
+            <div id="resultContainer" class="hidden">
+                <div class="result-header">
+                    <h3>Результат:</h3>
+                    <button id="copyBtn" class="icon-btn"><i class="fas fa-copy"></i></button>
+                </div>
+                <div id="resultText"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>ПишиЛегко &copy; 2025 | Powered by GigaChat API</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 
